@@ -1,0 +1,39 @@
+# ===========================
+# Default Collab Ignore Rules
+# ===========================
+
+# OS Generated
+# ============
+.DS_Store
+._*
+.Spotlight-V100
+.Trashes
+Icon?
+ehthumbs.db
+[Tt]humbs.db
+[Dd]esktop.ini
+
+# Visual Studio / MonoDevelop / Visual Studio Code generated
+# =====================================
+[Ee]xported[Oo]bj/
+*.userprefs
+*.csproj
+*.pidb
+*.suo
+*.sln
+*.user
+*.unityproj
+*.booproj
+.vs/
+.vscode/
+
+# Unity generated
+# ===============
+[Oo]bj/
+[Bb]uild
+sysinfo.txt
+*.stackdump
+[Tt]emp/
+.collabignore
+[Ll]ibrary/
+[Pp]ackages/

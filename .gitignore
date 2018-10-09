@@ -37,3 +37,4 @@ sysinfo.txt
 .collabignore
 [Ll]ibrary/
 [Pp]ackages/
+*.apk

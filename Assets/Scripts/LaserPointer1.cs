@@ -1,12 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class LaserPointer : MonoBehaviour {
+public class LaserPointer1 : MonoBehaviour {
 
-    public GameObject messageText1;
-    public GameObject messageText2;
-
+    //public GameObject messageText1;
+    //public GameObject messageText2;
+    [SerializeField]
+    Image image;
 
     [SerializeField]
 	private Transform _RightHandAnchor; // 右手
@@ -64,9 +66,9 @@ public class LaserPointer : MonoBehaviour {
                 // トリガーボタンを押した時
                 //Vector3 maxScale = new Vector3(5f,5f,5f);
                 //messageText1.GetComponent<TextMesh>.guiText = "Good
-                messageText1.SetActive(true);
+               // messageText1.SetActive(true);
 				// スケールの各値が5より小さい場合は0.1大きくする
-
+   
                 //if (scale.sqrMagnitude < maxScale.sqrMagnitude) {
 					//obj.transform.localScale = new Vector3 (scale.x + 0.1f, scale.y + 0.1f, scale.z + 0.1f);
 				//}
@@ -84,7 +86,7 @@ public class LaserPointer : MonoBehaviour {
             _LaserPointerRenderer.SetPosition(1, pointerRay.origin + pointerRay.direction * _MaxDistance);
             if (OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger))
             {
-                messageText2.SetActive(true);
+                //messageText2.SetActive(true);
             }
         }
 	}

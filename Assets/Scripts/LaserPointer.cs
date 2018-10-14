@@ -1,12 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class LaserPointer : MonoBehaviour {
 
-    public GameObject messageText1;
-    public GameObject messageText2;
-
+	[SerializeField] GameObject _TrueImage;
+	[SerializeField] GameObject _FalseImage;
 
     [SerializeField]
 	private Transform _RightHandAnchor; // 右手
@@ -49,7 +49,7 @@ public class LaserPointer : MonoBehaviour {
 
 		// レーザーの起点
 		_LaserPointerRenderer.SetPosition(0, pointerRay.origin);
-
+		
 		RaycastHit hitInfo;
 		if (Physics.Raycast(pointerRay, out hitInfo, _MaxDistance)) {
 			// Rayがヒットしたらそこまで
@@ -62,9 +62,19 @@ public class LaserPointer : MonoBehaviour {
 
 			if (OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger)) {
                 // トリガーボタンを押した時
+				if (obj.tag == "AnswerArea") {
+					GameObject image =  Instantiate(_TrueImage, pointerRay.origin + pointerRay.direction * 150, Quaternion.LookRotation(pointerRay.direction));
+					ScoreManager.addScore(20);
+					image.GetComponentInChildren<RawImage>().CrossFadeAlpha(0.0f, 1.0f, true);
+				}
+				else {
+					GameObject image = Instantiate(_FalseImage, pointerRay.origin + pointerRay.direction * 150, Quaternion.LookRotation(pointerRay.direction));
+					// fade out
+					image.GetComponentInChildren<RawImage>().CrossFadeAlpha(0.0f, 1.0f, true);					
+				}
                 //Vector3 maxScale = new Vector3(5f,5f,5f);
                 //messageText1.GetComponent<TextMesh>.guiText = "Good
-                messageText1.SetActive(true);
+                // messageText1.SetActive(true);
 				// スケールの各値が5より小さい場合は0.1大きくする
 
                 //if (scale.sqrMagnitude < maxScale.sqrMagnitude) {
@@ -84,8 +94,11 @@ public class LaserPointer : MonoBehaviour {
             _LaserPointerRenderer.SetPosition(1, pointerRay.origin + pointerRay.direction * _MaxDistance);
             if (OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger))
             {
-                messageText2.SetActive(true);
+				GameObject image = Instantiate(_FalseImage, pointerRay.origin + pointerRay.direction * 150, Quaternion.LookRotation(pointerRay.direction));
+				image.GetComponentInChildren<RawImage>().CrossFadeAlpha(0.0f, 1.0f, true);					
             }
         }
+		
 	}
+
 }

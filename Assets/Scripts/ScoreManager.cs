@@ -14,7 +14,7 @@ public class ScoreManager : MonoBehaviour {
 	}
 
 	static void updateScore () {
-		scoreText.text = "Score: " + score + "/" + maxScore;
+		scoreText.text = score + "/" + maxScore;
 	}
 	private static Text scoreText;
 	// Use this for initialization

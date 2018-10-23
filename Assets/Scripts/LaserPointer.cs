@@ -68,34 +68,16 @@ public class LaserPointer : MonoBehaviour {
 					image.GetComponentInChildren<RawImage>().CrossFadeAlpha(0.0f, 1.0f, true);
 				}
 				else {
-					GameObject image = Instantiate(_FalseImage, pointerRay.origin + pointerRay.direction * 150, Quaternion.LookRotation(pointerRay.direction));
-					// fade out
-					image.GetComponentInChildren<RawImage>().CrossFadeAlpha(0.0f, 1.0f, true);					
+					QuizManager.instance.Answer(false);
 				}
-                //Vector3 maxScale = new Vector3(5f,5f,5f);
-                //messageText1.GetComponent<TextMesh>.guiText = "Good
-                // messageText1.SetActive(true);
-				// スケールの各値が5より小さい場合は0.1大きくする
-
-                //if (scale.sqrMagnitude < maxScale.sqrMagnitude) {
-					//obj.transform.localScale = new Vector3 (scale.x + 0.1f, scale.y + 0.1f, scale.z + 0.1f);
-				//}
-			} /*else if (OVRInput.GetDown(OVRInput.Button.PrimaryTouchpad)) {
-				// タッチパッドボタンを押した時
-				Vector3 minScale = new Vector3(0.5f,0.5f,0.5f);
-				// スケールの各値が0.5より大きい場合は0.1小さくする
-				if (scale.sqrMagnitude > minScale.sqrMagnitude) {
-					obj.transform.localScale = new Vector3 (scale.x - 0.1f, scale.y - 0.1f, scale.z - 0.1f);
-				}
-			}*/
-			/* ---追加した部分ここまで--- */
+            
+			}
 		} else {
             // Rayがヒットしなかったら向いている方向にMaxDistance伸ばす
             _LaserPointerRenderer.SetPosition(1, pointerRay.origin + pointerRay.direction * _MaxDistance);
             if (OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger))
             {
-				GameObject image = Instantiate(_FalseImage, pointerRay.origin + pointerRay.direction * 150, Quaternion.LookRotation(pointerRay.direction));
-				image.GetComponentInChildren<RawImage>().CrossFadeAlpha(0.0f, 1.0f, true);					
+				QuizManager.instance.Answer(false);
             }
         }
 		
